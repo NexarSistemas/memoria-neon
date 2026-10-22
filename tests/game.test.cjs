@@ -3,14 +3,14 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const vm = require('node:vm');
 
-function game(initial = {}, random = 0) {
+function game(initial = {}, random = 0, selected = 'normal') {
   const storage = { ...initial }, timers = [];
   function element(value = '') {
     const classes = new Set();
     return { value, disabled: false, hidden: false, dataset: {}, textContent: '', className: '', handlers: {}, classList: { add(name) { classes.add(name); }, remove(name) { classes.delete(name); }, contains(name) { return classes.has(name); } },
       setAttribute() {}, addEventListener(type, callback) { this.handlers[type] = callback; } };
   }
-  const elements = Object.fromEntries(['round', 'record', 'streak', 'status', 'start', 'sound', 'difficulty', 'board'].map(id => [id, element(id === 'difficulty' ? 'normal' : '')]));
+  const elements = Object.fromEntries(['round', 'record', 'streak', 'status', 'start', 'sound', 'difficulty', 'board'].map(id => [id, element(id === 'difficulty' ? selected : '')]));
   const pads = Array.from({ length: 6 }, () => element());
   const html = fs.readFileSync('index.html', 'utf8');
   const script = html.match(/<script>\s*\(\(\)=>\{'use strict';[\s\S]*?<\/script>/)[0].replace(/^<script>|<\/script>$/g, '');
@@ -37,6 +37,23 @@ async function advance(g, ms) {
   g.timers.splice(index, 1)[0].fn();
   await Promise.resolve();
 }
+
+test('sincroniza la dificultad restaurada antes de inicializar', async () => {
+  for (const [level, count] of [['easy', 4], ['hard', 6]]) {
+    const key = `memoria-neon-record-v1-${level}`;
+    const g = game({ [key]: '8', 'memoria-neon-record-v1': '3', 'memoria-neon-sonido-v1': 'off' }, 0.999, level);
+    assert.equal(g.elements.difficulty.value, level);
+    assert.equal(g.elements.board.dataset.level, level);
+    assert.equal(g.pads.filter(p => !p.hidden).length, count);
+    assert.equal(g.elements.record.textContent, 8);
+    g.elements.start.handlers.click();
+    await advance(g, 650); await advance(g, 650);
+    assert.equal(g.pads.filter(p => !p.disabled).length, count);
+    g.pads[count - 1].handlers.keydown({ key: 'Enter', repeat: false, preventDefault() {} });
+    assert.equal(g.elements.streak.textContent, 1);
+    assert.equal(g.storage[key], '8');
+  }
+});
 
 test('récord anterior, niveles independientes y bloqueo durante la partida', async () => {
   const g = game({ 'memoria-neon-record-v1': '7', 'memoria-neon-record-v1-easy': '2', 'memoria-neon-sonido-v1': 'off' });

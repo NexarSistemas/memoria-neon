@@ -77,7 +77,7 @@ function hit(n){if(mode!=='input'||n>=levels[ui.difficulty.value])return;const i
  mode='transition';setStatus('✨ ¡Perfecto!','good');setTimeout(()=>{if(id===run)nextRound(id)},700)
  }else{enablePads(true)}}
 function start(){run++;const id=run;clearLights();sequence=[];round=0;streak=0;index=0;mode='ready';render();ui.start.disabled=true;ui.difficulty.disabled=true;ui.start.textContent='EN PARTIDA';enablePads(false);audioReady();nextRound(id)}
-ui.difficulty.addEventListener('change',updateDifficulty);
+ui.difficulty.addEventListener('change',updateDifficulty);updateDifficulty();
 ui.start.addEventListener('pointerdown',()=>audioReady());ui.start.addEventListener('click',start);
 ui.sound.addEventListener('click',()=>{muted=!muted;save(soundKey,muted?'off':'on');updateSound();if(!muted){audioReady();beep(523.25,.1)}});
 pads.forEach((pad,n)=>{pad.addEventListener('pointerdown',e=>{if(e.pointerType==='mouse'&&e.button!==0)return;e.preventDefault();audioReady();hit(n)});pad.addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&!e.repeat){e.preventDefault();audioReady();hit(n)}})});
