@@ -12,45 +12,55 @@
 :root{color-scheme:dark;font-family:system-ui,-apple-system,Segoe UI,sans-serif;background:#090e1b;color:#f5f7ff}*{box-sizing:border-box}body{margin:0;min-height:100svh;display:grid;place-items:center;padding:20px 14px;background:radial-gradient(ellipse at 50% 20%,#192247 0%,#0a1020 58%,#060914 100%)}main{width:min(100%,440px);text-align:center}h1{font-size:clamp(2rem,8vw,2.8rem);margin:0;letter-spacing:.06em;text-shadow:0 0 24px #6c78ff88}.neon{color:#56f5ff}p{color:#abb6d1;margin:7px 0 18px}.score{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-bottom:17px}.metric{background:#151e36;border:1px solid #344163;border-radius:13px;padding:10px 4px}.metric strong{display:block;font-size:1.55rem;font-variant-numeric:tabular-nums}.metric span{display:block;color:#a8b7d4;font-size:.73rem}.board{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:13px;padding:13px;aspect-ratio:1;background:#111a2d;border:1px solid #34456d;border-radius:28px;box-shadow:0 0 35px #141b5590}.pad{border:2px solid #ffffff27;border-radius:24px;touch-action:manipulation;cursor:pointer;transition:filter .09s,transform .09s,box-shadow .09s;outline-offset:4px;opacity:.75; -webkit-tap-highlight-color:transparent}.pad:disabled{cursor:default}.pad[data-pad="0"]{background:#01b99c;box-shadow:inset 0 0 36px #053b38}.pad[data-pad="1"]{background:#e94c78;box-shadow:inset 0 0 36px #4c142e}.pad[data-pad="2"]{background:#e8b533;box-shadow:inset 0 0 36px #5e3906}.pad[data-pad="3"]{background:#547dff;box-shadow:inset 0 0 36px #142b61}.pad.lit{filter:brightness(1.65) saturate(1.25);transform:scale(.97);opacity:1;border-color:#fff;box-shadow:0 0 29px currentColor, inset 0 0 15px #ffffff66}.pad[data-pad="0"].lit{color:#00ffcc}.pad[data-pad="1"].lit{color:#ff6498}.pad[data-pad="2"].lit{color:#ffd54c}.pad[data-pad="3"].lit{color:#669cff}.center{position:absolute;inset:36%;display:grid;place-items:center;border-radius:50%;background:#0b1122;border:4px solid #323f63;box-shadow:0 0 20px #000a;pointer-events:none;font-weight:900;font-size:clamp(1.1rem,6vw,1.7rem);color:#dbe9ff}.status{min-height:57px;display:flex;align-items:center;justify-content:center;font-size:1.06rem;font-weight:700;margin:9px 0;color:#d7e7ff}.actions{display:flex;gap:10px;justify-content:center}.action{border:0;border-radius:13px;min-height:50px;padding:12px 19px;font-weight:800;font-size:1rem;cursor:pointer;touch-action:manipulation}.primary{background:#56e6f9;color:#071021;box-shadow:0 0 18px #43dff655}.secondary{background:#222d48;color:#fff;border:1px solid #3b4d74}.action:disabled{opacity:.45;cursor:default}.foot{font-size:.77rem;margin-top:18px;color:#8f9dba}.message{color:#f9a3c5}.good{color:#63f5c3}@media(max-width:360px){.board{gap:10px;padding:10px}.pad{border-radius:18px}.center{inset:37%}}
 
 #installBtn{display:block;width:100%;margin:10px auto;max-width:400px}#installBtn[hidden]{display:none}
+.difficulty{display:flex;align-items:center;justify-content:center;gap:10px;margin:0 0 16px;color:#d7e7ff;font-weight:700}.difficulty select{background:#222d48;color:#fff;border:1px solid #3b4d74;border-radius:10px;padding:9px;font:inherit}.difficulty select:disabled{opacity:.6}.brand{font-size:.8rem;color:#8f9dba;margin:18px 0 0}.brand strong{color:#d7e7ff}.brand a{color:#56e6f9}
+.pad[hidden]{display:none}.board{display:block;padding:0;border-radius:50%;overflow:hidden;background:#111a2d}.board .pad{position:absolute;inset:0;width:100%;height:100%;border:0;border-radius:0;outline:none;opacity:.8;box-shadow:none;transition:filter .09s,opacity .09s}.board .pad.lit{transform:none;filter:brightness(1.65) saturate(1.25);opacity:1;box-shadow:none}.board .pad:focus-visible{filter:brightness(1.4);outline:none}.pad[data-pad="4"]{background:#a55be5}.pad[data-pad="5"]{background:#ee793e}.center{inset:34%;border:4px solid #323f63;z-index:1;pointer-events:none}.board[data-level="easy"] .pad[data-pad="0"]{clip-path:url(#clip-easy-0)}.board[data-level="easy"] .pad[data-pad="1"]{clip-path:url(#clip-easy-1)}.board[data-level="easy"] .pad[data-pad="2"]{clip-path:url(#clip-easy-2)}.board[data-level="easy"] .pad[data-pad="3"]{clip-path:url(#clip-easy-3)}.board[data-level="normal"] .pad[data-pad="0"]{clip-path:url(#clip-normal-0)}.board[data-level="normal"] .pad[data-pad="1"]{clip-path:url(#clip-normal-1)}.board[data-level="normal"] .pad[data-pad="2"]{clip-path:url(#clip-normal-2)}.board[data-level="normal"] .pad[data-pad="3"]{clip-path:url(#clip-normal-3)}.board[data-level="normal"] .pad[data-pad="4"]{clip-path:url(#clip-normal-4)}.board[data-level="hard"] .pad[data-pad="0"]{clip-path:url(#clip-hard-0)}.board[data-level="hard"] .pad[data-pad="1"]{clip-path:url(#clip-hard-1)}.board[data-level="hard"] .pad[data-pad="2"]{clip-path:url(#clip-hard-2)}.board[data-level="hard"] .pad[data-pad="3"]{clip-path:url(#clip-hard-3)}.board[data-level="hard"] .pad[data-pad="4"]{clip-path:url(#clip-hard-4)}.board[data-level="hard"] .pad[data-pad="5"]{clip-path:url(#clip-hard-5)}
 </style>
 </head>
 <body>
 <main>
 <h1>MEMORIA <span class="neon">NEÓN</span></h1>
 <p>Observá la secuencia. Repetila sin equivocarte.</p>
+<div class="difficulty"><label for="difficulty">Dificultad</label><select id="difficulty"><option value="easy">Fácil</option><option value="normal" selected>Medio</option><option value="hard">Difícil</option></select></div>
 <div class="score" aria-label="Marcadores">
  <div class="metric"><strong id="round">0</strong><span>RONDA</span></div>
  <div class="metric"><strong id="record">0</strong><span>RÉCORD</span></div>
  <div class="metric"><strong id="streak">0</strong><span>ACIERTOS</span></div>
 </div>
-<div class="board" id="board" aria-label="Tablero de memoria">
+<svg aria-hidden="true" width="0" height="0" style="position:absolute"><defs><clipPath id="clip-easy-0" clipPathUnits="objectBoundingBox"><path d="M 0.508552 0.010075 A .49 .49 0 0 1 0.989925 0.491448 L 0.669974 0.497033 A .17 .17 0 0 0 0.502967 0.330026 Z"/></clipPath><clipPath id="clip-easy-1" clipPathUnits="objectBoundingBox"><path d="M 0.989925 0.508552 A .49 .49 0 0 1 0.508552 0.989925 L 0.502967 0.669974 A .17 .17 0 0 0 0.669974 0.502967 Z"/></clipPath><clipPath id="clip-easy-2" clipPathUnits="objectBoundingBox"><path d="M 0.491448 0.989925 A .49 .49 0 0 1 0.010075 0.508552 L 0.330026 0.502967 A .17 .17 0 0 0 0.497033 0.669974 Z"/></clipPath><clipPath id="clip-easy-3" clipPathUnits="objectBoundingBox"><path d="M 0.010075 0.491448 A .49 .49 0 0 1 0.491448 0.010075 L 0.497033 0.330026 A .17 .17 0 0 0 0.330026 0.497033 Z"/></clipPath><clipPath id="clip-normal-0" clipPathUnits="objectBoundingBox"><path d="M 0.508552 0.010075 A .49 .49 0 0 1 0.963304 0.340472 L 0.660738 0.444653 A .17 .17 0 0 0 0.502967 0.330026 Z"/></clipPath><clipPath id="clip-normal-1" clipPathUnits="objectBoundingBox"><path d="M 0.968589 0.356738 A .49 .49 0 0 1 0.794889 0.891331 L 0.602309 0.635768 A .17 .17 0 0 0 0.662572 0.450297 Z"/></clipPath><clipPath id="clip-normal-2" clipPathUnits="objectBoundingBox"><path d="M 0.781052 0.901385 A .49 .49 0 0 1 0.218948 0.901385 L 0.402492 0.639256 A .17 .17 0 0 0 0.597508 0.639256 Z"/></clipPath><clipPath id="clip-normal-3" clipPathUnits="objectBoundingBox"><path d="M 0.205111 0.891331 A .49 .49 0 0 1 0.031411 0.356738 L 0.337428 0.450297 A .17 .17 0 0 0 0.397691 0.635768 Z"/></clipPath><clipPath id="clip-normal-4" clipPathUnits="objectBoundingBox"><path d="M 0.036696 0.340472 A .49 .49 0 0 1 0.491448 0.010075 L 0.497033 0.330026 A .17 .17 0 0 0 0.339262 0.444653 Z"/></clipPath><clipPath id="clip-hard-0" clipPathUnits="objectBoundingBox"><path d="M 0.508552 0.010075 A .49 .49 0 0 1 0.920012 0.247631 L 0.645718 0.412444 A .17 .17 0 0 0 0.502967 0.330026 Z"/></clipPath><clipPath id="clip-hard-1" clipPathUnits="objectBoundingBox"><path d="M 0.928564 0.262443 A .49 .49 0 0 1 0.928564 0.737557 L 0.648685 0.582418 A .17 .17 0 0 0 0.648685 0.417582 Z"/></clipPath><clipPath id="clip-hard-2" clipPathUnits="objectBoundingBox"><path d="M 0.920012 0.752369 A .49 .49 0 0 1 0.508552 0.989925 L 0.502967 0.669974 A .17 .17 0 0 0 0.645718 0.587556 Z"/></clipPath><clipPath id="clip-hard-3" clipPathUnits="objectBoundingBox"><path d="M 0.491448 0.989925 A .49 .49 0 0 1 0.079988 0.752369 L 0.354282 0.587556 A .17 .17 0 0 0 0.497033 0.669974 Z"/></clipPath><clipPath id="clip-hard-4" clipPathUnits="objectBoundingBox"><path d="M 0.071436 0.737557 A .49 .49 0 0 1 0.071436 0.262443 L 0.351315 0.417582 A .17 .17 0 0 0 0.351315 0.582418 Z"/></clipPath><clipPath id="clip-hard-5" clipPathUnits="objectBoundingBox"><path d="M 0.079988 0.247631 A .49 .49 0 0 1 0.491448 0.010075 L 0.497033 0.330026 A .17 .17 0 0 0 0.354282 0.412444 Z"/></clipPath></defs></svg>
+<div class="board" id="board" data-level="normal" aria-label="Tablero de memoria">
  <button class="pad" data-pad="0" aria-label="Verde" disabled></button>
  <button class="pad" data-pad="1" aria-label="Rosa" disabled></button>
  <button class="pad" data-pad="2" aria-label="Amarillo" disabled></button>
  <button class="pad" data-pad="3" aria-label="Azul" disabled></button>
+ <button class="pad" data-pad="4" aria-label="Violeta" disabled></button>
+ <button class="pad" data-pad="5" aria-label="Naranja" disabled hidden></button>
  <div class="center" aria-hidden="true">⚡</div>
 </div>
 <div id="status" class="status" role="status" aria-live="polite">¿Listo para el desafío?</div>
 <div class="actions"><button class="action primary" id="start">▶ EMPEZAR</button><button class="action secondary" id="sound" aria-pressed="true">🔊 Sonido</button></div>
 <button class="action secondary" id="installBtn" type="button" hidden>⬇ INSTALAR APLICACIÓN</button>
 <p class="foot">Cada ronda suma un color. Un error termina la partida.<br>Tu récord se guarda en este dispositivo.</p>
+<p class="brand"><strong>Nexar Sistemas</strong><br>Software simple para organizar tu negocio.<br><a href="https://nexarsistemas.com.ar/" target="_blank" rel="noopener noreferrer">Conocer Nexar</a></p>
 </main>
 <script>
 (()=>{'use strict';
 const pads=[...document.querySelectorAll('.pad')];
-const ui={round:document.getElementById('round'),record:document.getElementById('record'),streak:document.getElementById('streak'),status:document.getElementById('status'),start:document.getElementById('start'),sound:document.getElementById('sound')};
+const ui={round:document.getElementById('round'),record:document.getElementById('record'),streak:document.getElementById('streak'),status:document.getElementById('status'),start:document.getElementById('start'),sound:document.getElementById('sound'),difficulty:document.getElementById('difficulty'),board:document.getElementById('board')};
 const key='memoria-neon-record-v1', soundKey='memoria-neon-sonido-v1';
+const levels={easy:4,normal:5,hard:6};
+function recordKey(){return ui.difficulty.value==='normal'?key:key+'-'+ui.difficulty.value}
 function read(key,fallback){try{return localStorage.getItem(key)??fallback}catch{return fallback}}
 function save(key,value){try{localStorage.setItem(key,String(value))}catch{}}
 let record=Math.max(0,Number(read(key,0))||0),muted=read(soundKey,'on')==='off';
 let sequence=[],index=0,round=0,streak=0,mode='idle',run=0,audio=null,litTimers=[];
-const frequencies=[329.63,392,261.63,493.88];
+const frequencies=[329.63,392,261.63,493.88,440,587.33];
 ui.record.textContent=record;
 function updateSound(){ui.sound.textContent=muted?'🔇 Silencio':'🔊 Sonido';ui.sound.setAttribute('aria-pressed',String(!muted))}updateSound();
 function audioReady(){if(muted)return;try{audio??=new (window.AudioContext||window.webkitAudioContext)();if(audio.state==='suspended')audio.resume().catch(()=>{})}catch{}}
 function beep(freq,seconds=.19,type='sine',volume=.16){if(muted)return;audioReady();if(!audio||audio.state!=='running')return;try{let osc=audio.createOscillator(),gain=audio.createGain(),now=audio.currentTime;osc.type=type;osc.frequency.setValueAtTime(freq,now);gain.gain.setValueAtTime(volume,now);gain.gain.exponentialRampToValueAtTime(.001,now+seconds);osc.connect(gain).connect(audio.destination);osc.start(now);osc.stop(now+seconds+.01)}catch{}}
 function setStatus(text,className=''){ui.status.textContent=text;ui.status.className='status '+className}
-function enablePads(yes){pads.forEach(p=>p.disabled=!yes)}
+function enablePads(yes){pads.forEach((p,n)=>p.disabled=!yes||n>=levels[ui.difficulty.value])}
+function updateDifficulty(){ui.board.dataset.level=ui.difficulty.value;pads.forEach((p,n)=>{p.hidden=n>=levels[ui.difficulty.value]});record=Math.max(0,Number(read(recordKey(),0))||0);render()}
 function delay(ms){return new Promise(resolve=>setTimeout(resolve,ms))}
 function clearLights(){litTimers.forEach(clearTimeout);litTimers=[];pads.forEach(p=>p.classList.remove('lit'))}
 function flash(n,duration=300){const p=pads[n];p.classList.add('lit');beep(frequencies[n],Math.min(duration,400)/1000);const timer=setTimeout(()=>p.classList.remove('lit'),duration);litTimers.push(timer)}
@@ -59,14 +69,15 @@ async function playSequence(id){mode='show';enablePads(false);setStatus('👀 Mi
  const speed=Math.max(320,650-(round-1)*18);
  for(const n of sequence){if(id!==run)return;flash(n,Math.round(speed*.67));await delay(speed);if(id!==run)return}
  index=0;mode='input';enablePads(true);setStatus('👆 ¡Tu turno!');}
-async function nextRound(id){if(id!==run)return;round++;sequence.push(Math.floor(Math.random()*4));render();await playSequence(id)}
-function finish(){run++;mode='lost';enablePads(false);clearLights();beep(196,.23,'sawtooth',.11);setTimeout(()=>beep(146.83,.42,'sawtooth',.1),130);setStatus('💥 ¡Ups! Llegaste a la ronda '+round+'.','message');ui.start.textContent='↻ REINTENTAR';ui.start.disabled=false}
-function hit(n){if(mode!=='input')return;const id=run;enablePads(false);flash(n,220);
+async function nextRound(id){if(id!==run)return;round++;sequence.push(Math.floor(Math.random()*levels[ui.difficulty.value]));render();await playSequence(id)}
+function finish(){run++;mode='lost';enablePads(false);clearLights();beep(196,.23,'sawtooth',.11);setTimeout(()=>beep(146.83,.42,'sawtooth',.1),130);setStatus('💥 ¡Ups! Llegaste a la ronda '+round+'.','message');ui.start.textContent='↻ REINTENTAR';ui.start.disabled=false;ui.difficulty.disabled=false}
+function hit(n){if(mode!=='input'||n>=levels[ui.difficulty.value])return;const id=run;enablePads(false);flash(n,220);
  if(n!==sequence[index]){finish();return}
- streak++;index++;render();if(index===sequence.length){if(round>record){record=round;save(key,record);render()}
+ streak++;index++;render();if(index===sequence.length){if(round>record){record=round;save(recordKey(),record);render()}
  mode='transition';setStatus('✨ ¡Perfecto!','good');setTimeout(()=>{if(id===run)nextRound(id)},700)
  }else{enablePads(true)}}
-function start(){run++;const id=run;clearLights();sequence=[];round=0;streak=0;index=0;mode='ready';render();ui.start.disabled=true;ui.start.textContent='EN PARTIDA';enablePads(false);audioReady();nextRound(id)}
+function start(){run++;const id=run;clearLights();sequence=[];round=0;streak=0;index=0;mode='ready';render();ui.start.disabled=true;ui.difficulty.disabled=true;ui.start.textContent='EN PARTIDA';enablePads(false);audioReady();nextRound(id)}
+ui.difficulty.addEventListener('change',updateDifficulty);
 ui.start.addEventListener('pointerdown',()=>audioReady());ui.start.addEventListener('click',start);
 ui.sound.addEventListener('click',()=>{muted=!muted;save(soundKey,muted?'off':'on');updateSound();if(!muted){audioReady();beep(523.25,.1)}});
 pads.forEach((pad,n)=>{pad.addEventListener('pointerdown',e=>{if(e.pointerType==='mouse'&&e.button!==0)return;e.preventDefault();audioReady();hit(n)});pad.addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&!e.repeat){e.preventDefault();audioReady();hit(n)}})});
