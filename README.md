@@ -1,13 +1,14 @@
 # 🧠 Memoria Neón
 
-Juego de memoria secuencial con estética neón. Observá cómo se iluminan los cuatro colores y repetí la secuencia completa, en orden. Cada ronda agrega un paso y aumenta la dificultad.
+Juego de memoria secuencial con estética neón. Observá cómo se iluminan los colores y repetí la secuencia completa, en orden. Cada ronda agrega un paso y aumenta la velocidad.
 
-**Versión:** v1.0.0 · **Autor:** Nexar Sistemas
+**Versión:** v1.1.0 · **Autor:** Nexar Sistemas
 
 ## Características
 
-- Cuatro botones de colores con sonidos propios.
+- Cuatro, cinco o seis botones de colores con sonidos propios.
 - Secuencias progresivas y reproducción más rápida.
+- Fácil (4 botones), medio (5) y difícil (6), con récords independientes y la misma progresión de velocidad. Medio conserva el récord anterior.
 - Controles táctiles para celulares y soporte de teclado.
 - Récord y contador de aciertos.
 - Sonido opcional; datos guardados localmente.
@@ -31,11 +32,11 @@ Abrí `http://localhost:8000` en el navegador.
 
 ## Privacidad
 
-El récord y la configuración de sonido se almacenan mediante `localStorage` en el navegador. No hay cuentas, servidor ni sincronización; borrar los datos del sitio puede eliminar el récord.
+Los récords por dificultad y la configuración de sonido se almacenan mediante `localStorage` en el navegador. No hay cuentas, servidor ni sincronización; borrar los datos del sitio puede eliminar los récords.
 
 ## Estado y versión
 
-El MVP **v1.0.0** está preparado para publicación. La instalación PWA y el modo sin conexión requieren pruebas en Android después de habilitar GitHub Pages. El versionado sigue SemVer; los cambios posteriores se registran en [CHANGELOG.md](CHANGELOG.md).
+La instalación PWA y el modo sin conexión requieren pruebas en Android. El versionado sigue SemVer; los cambios se registran en [CHANGELOG.md](CHANGELOG.md).
 
 ## Licencia
 
